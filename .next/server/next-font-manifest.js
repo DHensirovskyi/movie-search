@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/dmytrohensirovskyi/Projects/NewMovie/src/app/layout\":[\"static/media/e300c52e74d6f774-s.p.woff2\",\"static/media/eafabf029ad39a43-s.p.woff2\",\"static/media/0484562807a97172-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

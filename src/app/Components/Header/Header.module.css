@@ -1,0 +1,11 @@
+.nav{
+    display: flex;
+    margin-left: auto;
+    gap: 1rem;
+}
+
+@media (max-width: 415px) {
+  .nav{
+    display: none;
+}
+}
