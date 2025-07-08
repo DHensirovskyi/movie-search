@@ -1,6 +1,8 @@
 body {
   background: #000000;
+  overflow-x: hidden;
 }
+
 body, html {
   min-height: 100vh;
   display: flex;
