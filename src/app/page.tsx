@@ -16,7 +16,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             backgroundSize: 'cover',
             height: '550px',
             lineHeight: '3rem',
-            width: '100vw',
+            width: '100%',
             position: 'relative',
             left: '50%',
             right: '50%',
