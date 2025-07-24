@@ -11,6 +11,9 @@
   "dependencies": {
     "@mantine/core": "^8.1.2",
     "@mantine/hooks": "^8.1.2",
+    "framer-motion": "^12.23.9",
+    "motion": "^12.23.6",
+    "motion-plus": "^1.5.1",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

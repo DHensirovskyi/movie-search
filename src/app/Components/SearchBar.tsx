@@ -33,7 +33,7 @@ export default function SearchBar() {
             style={{ background: '#fff', marginRight: '2rem' }}
             onClick={handleSearch}
           >
-            <IoSearchSharp style={{ width: 24, height: 24, color: 'black' }} />
+          <IoSearchSharp style={{ width: 24, height: 24, color: 'black' }} />
           </ActionIcon>
           }
         />

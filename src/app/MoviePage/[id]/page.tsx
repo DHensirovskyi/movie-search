@@ -51,7 +51,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
                     </div>
                     <div className="movie-text-block">
 
-                        <h3>{movie.title}</h3>
+                        <p style={{fontWeight: '700', fontSize: '2.125rem', marginTop: '-10px'}}>{movie.title}</p>
 
                         <div className="movie-info-block">
                             {movie.genres && movie.genres.map((genre: IGenre) => (

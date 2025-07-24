@@ -1,11 +1,5 @@
 import Movie from "./Movie";
-
-export type MovieType = {
-  poster_path: string;
-  id: number;
-  title: string;
-  vote_average: number;
-};
+import type { MovieType } from "@/app/types/types";
 
 type MovieProps = {
   movies: MovieType[];
