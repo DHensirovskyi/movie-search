@@ -5,6 +5,8 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { Header } from './Components/Header/Header';
 import { Footer } from './Components/Footer/Footer';
 import { Poppins } from 'next/font/google'
+import { FavoritesProvider } from './context/FavoritesProvider';
+import { PageLoader } from './Components/PageLoader';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,13 +30,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/icon.svg" />
       </head>
       <body className={poppins.className}>
-        <MantineProvider>
-          <Header />
-            <main>
-              {children}
-            </main>
-          <Footer/>
-        </MantineProvider>
+        <FavoritesProvider>
+          <PageLoader>
+            <MantineProvider>
+              <Header />
+                <main>
+                  {children}
+                </main>
+              <Footer/>
+            </MantineProvider>
+          </PageLoader>
+        </FavoritesProvider>
       </body>
     </html>
   );

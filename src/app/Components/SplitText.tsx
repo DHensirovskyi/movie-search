@@ -4,7 +4,6 @@ import { animate, stagger } from "motion"
 import { splitText } from "motion-plus"
 import { useEffect, useRef } from "react"
 
-// Основной компонент
 export default function SplitText() {
     const containerRef = useRef<HTMLDivElement>(null)
 

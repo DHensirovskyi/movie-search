@@ -1,7 +1,29 @@
-import { MovieType } from "@/app/types/types";
+import type { MovieType } from '@/app/types/types';
+
+export async function getMovieDetailsById(id: number): Promise<MovieType | null> {
+  const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+  const url = `https://api.themoviedb.org/3/movie/${id}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${API_TOKEN}`
+    }
+  };
+
+  try {
+    const res = await fetch(url, options);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error(`Failed to fetch movie ${id}`, error);
+    return null;
+  }
+}
+
 
 export async function getPopularMovies(): Promise<MovieType[]> {
-  const API_TOKEN = process.env.API_TOKEN;
+  const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
   const url = 'https://api.themoviedb.org/3/movie/popular';
 
   const options = {
@@ -26,8 +48,9 @@ export async function getPopularMovies(): Promise<MovieType[]> {
   }
 }
 
+
 export async function getTopRatedMovies(): Promise<MovieType[]> {
-  const API_TOKEN = process.env.API_TOKEN;
+  const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
   const url = 'https://api.themoviedb.org/3/movie/top_rated';
 
   const options = {
@@ -53,7 +76,7 @@ export async function getTopRatedMovies(): Promise<MovieType[]> {
 }
 
 export async function getUpcomingMovies(): Promise<MovieType[]> {
-  const API_TOKEN = process.env.API_TOKEN;
+  const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
   const url = 'https://api.themoviedb.org/3/movie/upcoming';
 
   const options = {

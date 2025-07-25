@@ -15,7 +15,7 @@ interface IGenre {
 export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params
 
-    const API_TOKEN = process.env.API_TOKEN;
+    const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
     const url = `https://api.themoviedb.org/3/movie/${resolvedParams.id}`;
 
     const options = {

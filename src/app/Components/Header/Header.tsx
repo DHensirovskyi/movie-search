@@ -20,18 +20,18 @@ export function Header() {
         <Group style={{lineHeight:1, marginBottom: '30px', marginTop: '34px', alignItems: 'flex-start'}}>
           <Link href={'/'} style={{textDecoration: 'none', cursor: 'pointer', fontSize: '20px'}} className={shrikhand.className}><span style={{color: '#FF0000'}}>Calipso</span> <span style={{color: 'white'}}>Movies</span></Link>
           <div className={styles.nav}>
-            <div style={{marginLeft: 'auto'}}>
+            <div>
               <Link 
-              href={'/'} 
-              style={{
+              href={'/favorites'} 
+              style={{ 
               color: 'white', 
               textDecoration: 'none', 
               cursor: 'pointer', 
               fontSize: '16px', 
               fontWeight: '700'}}>
-                Movie Page
-                {pathname.startsWith('/MoviePage') && <div style={{width: '5px', height: '5px', background: '#FF0000', borderRadius:'100%', margin: '4px auto'}}></div>}
+                Favorites
               </Link>
+              {pathname === '/favorites' && <div style={{width: '5px', height: '5px', background: '#FF0000', borderRadius:'100%', margin: '4px auto'}}></div>}
             </div>
 
             <div>
