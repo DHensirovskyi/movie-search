@@ -22,7 +22,6 @@ export default async function ActorPage({ params }: { params: Promise<{ actorId:
         const res = await fetch(url, options);
         const actor = await res.json()
         if (!res.ok) return null;
-        console.log(actor);
 
         const formattedDate = actor.birthday ? new Date(actor.birthday).toLocaleDateString('en-GB', {
             day: '2-digit',
