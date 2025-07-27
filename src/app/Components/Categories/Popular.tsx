@@ -17,7 +17,6 @@ export default function Popular() {
       const loadMovies = async () => {
         const allMovies = await getPopularMovies();
         setMovies(allMovies || [])
-        console.log(allMovies);
       }
       loadMovies()
     },[])
