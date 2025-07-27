@@ -17,7 +17,6 @@ export default function TopRated() {
       const loadMovies = async () => {
         const allMovies = await getTopRatedMovies();
         setMovies(allMovies || [])
-        console.log(allMovies);
       }
       loadMovies()
     },[])
