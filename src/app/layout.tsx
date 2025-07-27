@@ -7,6 +7,7 @@ import { Footer } from './Components/Footer/Footer';
 import { Poppins } from 'next/font/google'
 import { FavoritesProvider } from './context/FavoritesProvider';
 import { PageLoader } from './Components/PageLoader';
+import ScrollToTop from './Components/ScrollToTop';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={poppins.className}>
         <FavoritesProvider>
           <PageLoader>
+            <ScrollToTop />
             <MantineProvider>
               <Header />
                 <main>

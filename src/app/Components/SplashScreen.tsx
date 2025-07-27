@@ -30,6 +30,7 @@ export const SplashScreen = () => {
                 duration: 0.6,
                 scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
             }}
+            style={{marginBottom: '100px'}}
         >
         <Link href={'/'} style={{textDecoration: 'none', cursor: 'pointer', fontSize: '20px'}} className={shrikhand.className}><span style={{color: '#FF0000'}}>Calipso</span> <span style={{color: 'white'}}>Movies</span></Link>
         </motion.div>

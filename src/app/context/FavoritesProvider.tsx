@@ -3,12 +3,10 @@
 import { useState, useEffect } from 'react';
 import { FavoritesContext } from './FavoritesContext';
 
-// Этот компонент будет оборачивать наше приложение
 export const FavoritesProvider = ({ children }: { children: React.ReactNode }) => {
   const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // При первой загрузке считываем данные из localStorage
   useEffect(() => {
     try {
       const items = window.localStorage.getItem('favoriteMovies');
@@ -22,7 +20,6 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
     }
   }, []);
 
-  // При каждом изменении списка — сохраняем его в localStorage
   useEffect(() => {
     if (!isLoading) {
       window.localStorage.setItem('favoriteMovies', JSON.stringify(favoriteIds));

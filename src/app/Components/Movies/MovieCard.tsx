@@ -32,8 +32,8 @@ export function MovieCard({ movie, isFavorite, onToggleFavorite }: MovieCardProp
         aria-label="Toggle Favorite"
       >
         {isFavorite 
-          ? <MdFavorite size="2.2rem" color="#ff0000" />
-          : <MdOutlineFavoriteBorder size="2.2rem" style={{ filter: 'drop-shadow(0 0 3px black)' }} />
+          ? <MdFavorite size="2rem" color="#ff0000" />
+          : <MdOutlineFavoriteBorder size="2rem" style={{ filter: 'drop-shadow(0 0 3px black)' }} />
         }
       </button>
 

@@ -4,6 +4,8 @@ import { LuTimer } from "react-icons/lu";
 import { MdNoAdultContent } from "react-icons/md";
 import Image from 'next/image'
 import './globals.css';
+import { MotionDiv } from "@/app/Components/Motion";
+import Link from "next/link";
 
 
 interface IGenre {
@@ -11,12 +13,19 @@ interface IGenre {
     name: string
 }
 
+interface IActor {
+    id: number;
+    name: string;
+    character: string;
+    profile_path: string | null;
+}
 
 export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params
 
     const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
     const url = `https://api.themoviedb.org/3/movie/${resolvedParams.id}`;
+    const actorUrl = `https://api.themoviedb.org/3/movie/${resolvedParams.id}/credits`;
 
     const options = {
         method: 'GET',
@@ -27,9 +36,18 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
     };
 
     try{
-        const res = await fetch(url,options)
-        const movie = await res.json()
-        console.log(movie);
+        const [movieRes, actorRes] = await Promise.all([
+            fetch(url, options),
+            fetch(actorUrl, options)
+        ]);
+
+        if (!movieRes.ok || !actorRes.ok) {
+            throw new Error('Could not load movie info');
+        }
+
+        const movie = await movieRes.json();
+        const actorInfo = await actorRes.json();
+        const cast: IActor[] = actorInfo.cast; 
 
         const formattedDate = movie.release_date ? new Date(movie.release_date).toLocaleDateString('en-GB', {
             day: '2-digit',
@@ -40,7 +58,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
         const formatRuntime = (runtime: number) => {
             const hours = Math.floor(runtime / 60);
             const minutes = runtime % 60;
-            return `${hours}:${minutes.toString().padStart(2, '0')}`;
+            return `${hours}h ${minutes.toString().padStart(2, '0')}m`;
         };
 
         return(
@@ -73,7 +91,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
                                 <MdNoAdultContent />
                             </div>}
                         </div>
-                        {movie.overview && <p>{movie.overview}</p>}
+                        {movie.overview && <p className="description-text">{movie.overview}</p>}
 
                         <div className="movie-about-block">
                             {movie.adult && <b><p style={{color: '#FF0000'}}>Adult Content</p></b>}
@@ -82,6 +100,29 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
                             {movie.release_date && <p><b>Release Date: </b>{formattedDate}</p>}
                             {movie.production_companies.length > 0 && <p><b>Companies: </b>{movie.production_companies.map((company: {name: string}) => company.name).join(', ')}</p>}
                         </div>
+                    </div>
+                </div>
+                
+                <div style={{ marginTop: '40px' }}>
+                    <h2 style={{ fontSize: '1.75rem', marginBottom: '20px' }}>Cast</h2>
+                    <div className='grid'>
+                        {cast && cast.slice(0, 10).map((person) => (
+                            <Link href={`actor/${person.id}`} style={{ textDecoration: 'none' }} key={person.id}>
+                            <MotionDiv
+                                whileHover={{ scale: 1.03, y: -2 }}
+                                whileTap={{ scale: 0.98 }} >
+                                    <Image
+                                        width={140}
+                                        height={210}
+                                        alt={person.name}
+                                        src={person.profile_path ? `https://image.tmdb.org/t/p/w185${person.profile_path}` : '/noImg.svg'}
+                                        style={{ width: '100%', aspectRatio: '1/1.5', height: 'auto', objectFit: 'cover', borderRadius: '8px' }}
+                                    />
+                                    <p style={{ marginTop: '8px', fontWeight: '600', color: 'white'}}>{person.name}</p>
+                                    <p style={{ fontSize: '0.875rem', color: '#aaa', marginTop: '-10px' }}>{person.character}</p>
+                            </MotionDiv>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </Container>

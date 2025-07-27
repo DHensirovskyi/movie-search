@@ -4,8 +4,34 @@
     gap: 1rem;
 }
 
+.drawerContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-md);
+    margin-top: 30px;
+}
+
+.desktopLinks {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.desktopButton {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.burger {
+  @media (min-width: 769px) {
+    display: none;
+    color: 'white'
+  }
+}
+
 @media (max-width: 415px) {
-  .nav{
+  .desktopLinks{
     display: none;
 }
 }

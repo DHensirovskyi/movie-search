@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from 'react';
-import { FavoritesContext } from '../context/FavoritesContext'; // Укажи правильный путь
+import { FavoritesContext } from '../context/FavoritesContext';
 
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);

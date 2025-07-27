@@ -43,14 +43,14 @@ export default function FavoritesPage() {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '30px auto', padding: '0 2rem' }}>
-      <Title order={1} mb="xl" style={{color: 'white'}}>Мое избранное</Title>
+      <Title order={1} mb="xl" style={{color: 'white'}}>My favorites</Title>
       
       {favoriteMovies.length > 0 ? (
         <MovieList movies={favoriteMovies} />
       ) : (
         <Center style={{ height: '50vh', flexDirection: 'column' }}>
-          <Title order={2} style={{color: 'white'}}>Список избранного пуст</Title>
-          <Text c="dimmed">Добавьте фильмы, нажимая на сердечко ❤️</Text>
+          <Title order={2} style={{color: 'white'}}>Favorites list is empty</Title>
+          <Text c="dimmed">Add movies by clicking on the heart ❤️</Text>
         </Center>
       )}
     </div>

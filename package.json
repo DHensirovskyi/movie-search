@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "^8.1.2",
+    "@mantine/carousel": "^8.2.1",
+    "@mantine/core": "^8.2.1",
     "@mantine/hooks": "^8.1.2",
     "framer-motion": "^12.23.9",
     "motion": "^12.23.6",
