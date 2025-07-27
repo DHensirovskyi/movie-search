@@ -17,7 +17,6 @@ export default function Upcoming() {
       const loadMovies = async () => {
         const allMovies = await getUpcomingMovies();
         setMovies(allMovies || [])
-        console.log(allMovies);
       }
       loadMovies()
     },[])
